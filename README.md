@@ -37,3 +37,4 @@ Test automation for web and api's using Cypress
 # PS
 1. I was unable to reproduce 403 Error code in API test that's why could not automate the test.
 2. I'm using Windows OS that's why put 'bat' keyword in Jenkinsfile. To work on other OS's , please change to 'sh' in Jenkinsfile.
+3. Currently tests will run on Chrome browser. To run on 'electron' browser, please change  "cypress:run": "cypress run --browser=chrome" to  "cypress:run": "cypress run" in package.json file
