@@ -34,4 +34,5 @@ Test automation for web and api's using Cypress
 5. For actions respective to page elements, refer the path : 'CypressDemo\cypress\action' 
 6. For Utilities to generate Hash, refer the path : 'C:\Users\RTR\git\CypressDemo\cypress\utils'
 
-# PS: I was unable to reproduce 403 Error code in API test that's why could not automate the test and also could not get good resolution for logs to be printed in console for web test specially but added proper logs in Cypress Test Runner.
+# PS
+I was unable to reproduce 403 Error code in API test that's why could not automate the test and also could not get good resolution for logs to be printed in console for web test specially but added proper logs in Cypress Test Runner.
