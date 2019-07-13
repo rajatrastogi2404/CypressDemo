@@ -1,0 +1,30 @@
+{
+  "name": "cypressdemo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "blueimp-md5": "^2.10.0",
+    "cypress": "^3.3.2",
+    "md5": "^2.2.1"
+  },
+  "devDependencies": {
+    "@types/md5": "^2.1.33",
+    "cypress-log-to-output": "^1.0.4",
+    "cypress-xpath": "^1.4.0"
+  },
+  "scripts": {
+    "test": "test web and api",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run --browser=chrome"
+  },
+  "repository": {
+    "type": "git",
+    "url": "test"
+  },
+  "keywords": [
+    "test"
+  ],
+  "author": "rajat rastogi",
+  "license": "ISC"
+}
