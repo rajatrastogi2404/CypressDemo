@@ -15,7 +15,7 @@ describe("Marvel Series API Error codes", function () {
             qs: { 'apikey': apiKey, 'hash': hash }
         })
             .then((response) => {
-                console.log('Response is ->' + response.body.message)
+                cy.task('log', 'Response is ->' + response.body.message)
                 expect(response.status).to.eq(409)
                 expect(response.body).to.have.property('message', 'You must provide a timestamp.')
             })
@@ -35,7 +35,7 @@ describe("Marvel Series API Error codes", function () {
             qs: { 'ts': timeStamp, 'hash': hash }
         })
             .then((response) => {
-                console.log('Response is ->' + response.body.message)
+                cy.task('log', 'Response is ->' + response.body.message)
                 expect(response.status).to.eq(409)
                 expect(response.body).to.have.property('message', 'You must provide a user key.')
             })
@@ -54,7 +54,7 @@ describe("Marvel Series API Error codes", function () {
             qs: { 'ts': timeStamp, 'apikey': apiKey }
         })
             .then((response) => {
-                console.log('Response is ->' + response.body.message)
+                cy.task('log', 'Response is ->' + response.body.message)
                 expect(response.status).to.eq(409)
                 expect(response.body).to.have.property('message', 'You must provide a hash.')
             })
@@ -73,7 +73,7 @@ describe("Marvel Series API Error codes", function () {
             qs: { 'ts': timeStamp, 'apikey': apiKey + 1, 'hash': hash }
         })
             .then((response) => {
-                console.log('Response is ->' + response.body.message)
+                cy.task('log', 'Response is ->' + response.body.message)
                 expect(response.status).to.eq(401)
                 expect(response.body).to.have.property('message', 'The passed API key is invalid.')
             })
@@ -92,7 +92,7 @@ describe("Marvel Series API Error codes", function () {
             qs: { 'ts': timeStamp, 'apikey': apiKey, 'hash': hash + 1 }
         })
             .then((response) => {
-                console.log('Response is ->' + response.body.message)
+                cy.task('log', 'Response is ->' + response.body.message)
                 expect(response.status).to.eq(401)
                 expect(response.body).to.have.property('message', 'That hash, timestamp and key combination is invalid.')
             })
@@ -111,7 +111,7 @@ describe("Marvel Series API Error codes", function () {
             qs: { 'ts': timeStamp, 'apikey': apiKey, 'hash': hash }
         })
             .then((response) => {
-                console.log('Response is ->' + response.body.message)
+                cy.task('log', 'Response is ->' + response.body.message)
                 expect(response.status).to.eq(405)
                 expect(response.body).to.have.property('message', 'POST is not allowed')
             })
@@ -133,14 +133,14 @@ describe("Marvel Comics API", function () {
             qs: { 'ts': timeStamp, 'apikey': apiKey, 'hash': hash }
         })
             .then((response) => {
-                console.log('response code is ->'+ response.status)
-                console.log('comic id received in response ->' +response.body.data.results[0].id)
+                cy.task('log', 'Response status code is ->' + response.status)
+                cy.task('log', 'Comic id received in response ->' + response.body.data.results[0].id)
                 expect(response.status).to.eq(200)
                 expect(response.body.data.count).to.eq(1)
                 expect(response.body.data.results[0].id).to.eq(27649)
             })
     });
-}); 
+});
 describe("Marvel Character API", function () {
     it("Get Character API- by Id ", function () {
         const util = new Utilities();
@@ -156,15 +156,14 @@ describe("Marvel Character API", function () {
             qs: { 'ts': timeStamp, 'apikey': apiKey, 'hash': hash }
         })
             .then((response) => {
-                console.log('response status code ->' + response.status)
+                cy.task('log', 'Response status code ->' + response.status)
                 expect(response.status).to.eq(200)
                 expect(response.body.data.count).to.eq(1)
                 expect(response.body.data.results[0].name).to.eq('Spider-Man (Ultimate)')
-                console.log('Name received in response ->' +response.body.data.results[0].name)
+                cy.task('log', 'Name received in response ->' + response.body.data.results[0].name)
                 expect(response.body.data.results[0].modified).to.gt('2014-01')
                 var imagePath = response.body.data.results[0].thumbnail.path + '.' + response.body.data.results[0].thumbnail.extension
-                cy.log(imagePath)
-                console.log('image path ->' + imagePath)
+                cy.task('log', 'image path ->' + imagePath)
                 cy.request(imagePath).then((response) => {
                     expect(response.status).to.eq(200)
                 });
@@ -187,10 +186,10 @@ describe("Marvel Character API for invalid id", function () {
             qs: { 'ts': timeStamp, 'apikey': apiKey, 'hash': hash }
         })
             .then((response) => {
-                console.log('Response received ->' +response.body.status)
+                cy.task('log', 'Response received ->' + response.body.status)
                 expect(response.status).to.eq(404)
                 expect(response.body.status).to.eq('We couldn\'t find that character')
                 expect(response.body).not.eq('Spider-Man (Ultimate)')
             })
-        });
-    });    
+    });
+});    

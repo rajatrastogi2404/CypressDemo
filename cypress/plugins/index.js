@@ -12,15 +12,6 @@
 // the project's config changing)
 
 module.exports = (on, config) => {
-  /** the rest of your plugins... **/
-  require('cypress-log-to-output').install(on, (type, event) => {
-    if (event.level === 'log' || event.type === 'log') {
-      return true
-    }
-
-    return false
-  })
-
   on('task', {
     log(message) {
       console.log(message)

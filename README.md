@@ -35,4 +35,5 @@ Test automation for web and api's using Cypress
 6. For Utilities to generate Hash, refer the path : 'C:\Users\RTR\git\CypressDemo\cypress\utils'
 
 # PS
-I was unable to reproduce 403 Error code in API test that's why could not automate the test and also could not get good resolution for logs to be printed in console for web test specially but added proper logs in Cypress Test Runner.
+1. I was unable to reproduce 403 Error code in API test that's why could not automate the test.
+2. I'm using Windows OS that's why put 'bat' keyword in Jenkinsfile. To work on other OS's , please change to 'sh' in Jenkinsfile.
